@@ -56,21 +56,17 @@ El Perú es uno de los líderes mundiales en la extracción de recursos hidrobio
 Para resolver este problema de ingeniería pesquera, aplicamos los principios fundamentales de la mecánica vectorial, dinámica de partículas, fluidos y oscilaciones:
 
 <p align="center">
-  <img src="extracted_media/TIF%20F%C3%ADsica%20-%20An%C3%A1lisis%20Winche%20Pesquero/image3.png" width="85%" alt="Esquema de Fuerzas, Torque y Tensión en el Tambor del Winche">
+  <img src="imagenes/esquema_fuerzas_winche.png" width="85%" alt="Esquema de Fuerzas, Torque y Tensión en el Tambor del Winche">
   <br>
   <em>Figura 1: Esquema de fuerzas dinámicas en el tambor de arrollamiento (Tensión F, velocidad angular $\omega$, torque $M_t$ y diámetro del tambor).</em>
 </p>
 
 #### 3.1. Caracterización Vectorial del Sistema
 Se establece un sistema de coordenadas bidimensional ($x, y$) en el plano vertical, donde el eje $y$ representa la profundidad del mar y el eje $x$ el arrastre horizontal hacia la embarcación. Las fuerzas actuantes sobre la red se modelan vectorialmente como:
-*   **Vector Peso ($\vec{P}$):** Fuerza de atracción gravitatoria sobre la masa de captura de bonito ($m$) y la red. Actúa verticalmente hacia abajo:
-    $$\vec{P} = -m \cdot g \hat{j}$$
-*   **Vector Empuje Hidrostático ($\vec{E}$):** Fuerza de flotación vertical ejercida por el agua de mar (Principio de Arquímedes). Actúa hacia arriba mientras la captura esté sumergida:
-    $$\vec{E} = E \hat{j} = \rho_{\text{agua}} \cdot V_{\text{desplazado}} \cdot g \hat{j}$$
-*   **Vector Fricción Hidrodinámica ($\vec{F}_d$):** Resistencia del fluido que se opone al movimiento de la red. Actúa en sentido contrario a la velocidad relativa:
-    $$\vec{F}_d = -F_d \cdot \text{sgn}(v_{\text{rel}}) \hat{j}$$
-*   **Vector Tensión ($\vec{T}$):** Fuerza de tracción ejercida por el cable del winche a través del sistema de poleas. Actúa verticalmente hacia arriba:
-    $$\vec{T} = T \hat{j}$$
+*   **Vector Peso ($\vec{P}$):** Fuerza de atracción gravitatoria sobre la masa de captura de bonito ($m$) y la red. Actúa verticalmente hacia abajo: $\vec{P} = -m \cdot g \hat{j}$
+*   **Vector Empuje Hidrostático ($\vec{E}$):** Fuerza de flotación vertical ejercida por el agua de mar (Principio de Arquímedes). Actúa hacia arriba mientras la captura esté sumergida: $\vec{E} = E \hat{j} = \rho_{\text{agua}} \cdot V_{\text{desplazado}} \cdot g \hat{j}$
+*   **Vector Fricción Hidrodinámica ($\vec{F}_d$):** Resistencia del fluido que se opone al movimiento de la red. Actúa en sentido contrario a la velocidad relativa: $\vec{F}_d = -F_d \cdot \text{sgn}(v_{\text{rel}}) \hat{j}$
+*   **Vector Tensión ($\vec{T}$):** Fuerza de tracción ejercida por el cable del winche a través del sistema de poleas. Actúa verticalmente hacia arriba: $\vec{T} = T \hat{j}$
 
 ---
 
@@ -145,19 +141,19 @@ Para validar la viabilidad del izaje de **500 kg de bonito** bajo condiciones di
 El análisis físico utiliza los modelos dimensionales desarrollados en Autodesk Inventor para garantizar que la resistencia de los materiales soporte los esfuerzos calculados:
 
 <p align="center">
-  <img src="extracted_media/TIF%20F%C3%ADsica%20-%20An%C3%A1lisis%20Winche%20Pesquero/image1.png" width="85%" alt="Modelado 3D del Ensamble General del Winche Pesquero">
+  <img src="imagenes/ensamble_winche_3d.png" width="85%" alt="Modelado 3D del Ensamble General del Winche Pesquero">
   <br>
   <em>Figura 2: Ensamble tridimensional general del winche pesquero modelado en Autodesk Inventor (winche_ensamble.iam).</em>
 </p>
 
 <p align="center">
-  <img src="extracted_media/TIF%20F%C3%ADsica%20-%20An%C3%A1lisis%20Winche%20Pesquero/image2.png" width="85%" alt="Diseño CAD del Tambor de Enrollamiento">
+  <img src="imagenes/tambor_cad.png" width="85%" alt="Diseño CAD del Tambor de Enrollamiento">
   <br>
   <em>Figura 3: Modelo del tambor de arrollamiento de cables (tambor.ipt), diseñado para soportar las presiones radiales del cable de acero.</em>
 </p>
 
 <p align="center">
-  <img src="extracted_media/TIF%20F%C3%ADsica%20-%20An%C3%A1lisis%20Winche%20Pesquero/image4.png" width="85%" alt="Diseño CAD del Eje de Transmisión">
+  <img src="imagenes/eje_cad.png" width="85%" alt="Diseño CAD del Eje de Transmisión">
   <br>
   <em>Figura 4: Eje central de transmisión de torque (eje.ipt), dimensionado para resistir esfuerzos combinados de torsión y flexión.</em>
 </p>
