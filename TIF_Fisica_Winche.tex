@@ -660,7 +660,7 @@ Para garantizar que la maniobra de izaje no sobrepase los límites operativos de
 \end{table}
 
 \subsection{Simulador de Alta Fidelidad en Python}
-Para validar experimentalmente la dinámica del cable y su impacto en el winche bajo efectos hidrodinámicos, se desarrolló un simulador en Python ([simulacion\_winche.py](file:///F:/ING%20PESQUERA/FISICA/TIF%20UNIDAD%202/simulacion_winche.py)) que integra numéricamente las ecuaciones de movimiento mediante un método de Euler-Cromer en sub-pasos temporales de $\Delta t = \SI{0.005}{s}$ para asegurar estabilidad matemática.
+Para validar experimentalmente la dinámica del cable y su impacto en el winche bajo efectos hidrodinámicos, se desarrolló un simulador en Python (\texttt{simulacion\_winche.py}), el cual se encuentra publicado en el repositorio público de GitHub (\url{https://github.com/FrancoArenasM/TIF-Fisica-Winche}) junto con una versión interactiva web para que cualquier usuario pueda descargarlo y ejecutarlo. El simulador integra numéricamente las ecuaciones de movimiento mediante un método de Euler-Cromer en sub-pasos temporales de $\Delta t = \SI{0.005}{s}$ para asegurar estabilidad matemática.
 
 El simulador despliega una interfaz gráfica interactiva utilizando \textit{Matplotlib Widgets}, facilitando el monitoreo de la telemetría en tiempo real bajo esquemas modernos de automatización y registro de datos (Pérez \& Martínez, 2021):
 \begin{itemize}
@@ -685,7 +685,7 @@ Este escenario replica las condiciones de diseño base del Escenario 1 ($m = \SI
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{simulacion/prueba1_mar_calma.png}
+    \includegraphics[width=0.85\textwidth]{prueba1_mar_calma.png}
     \caption{Simulación en mar en calma: el cable permanece vertical y la telemetría coincide con el equilibrio estático de fuerzas.}
     \label{fig:prueba1}
 \end{figure}
@@ -703,7 +703,7 @@ La fuerza horizontal de la corriente y la inclinación del cable incrementan not
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{simulacion/prueba2_corriente_1_5.png}
+    \includegraphics[width=0.85\textwidth]{prueba2_corriente_1_5.png}
     \caption{Simulación con corriente marina transversal de \SI{1,5}{m/s}: se aprecia la inclinación del cable ($\theta \approx 21,2^\circ$) y el correspondiente momento de escora.}
     \label{fig:prueba2}
 \end{figure}
@@ -721,7 +721,7 @@ Aunque la masa de bonito se triplica, el ángulo $\theta$ disminuye a $14,1^\cir
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{simulacion/prueba3_carga_maxima.png}
+    \includegraphics[width=0.85\textwidth]{prueba3_carga_maxima.png}
     \caption{Simulación a carga máxima ($m = \SI{1500}{kg}$): el motor Yanmar 3TNV88 opera de forma segura al $56\%$ de su potencia nominal.}
     \label{fig:prueba3}
 \end{figure}
@@ -739,7 +739,7 @@ Al elevar a alta velocidad, la potencia requerida se dispara debido al trabajo m
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{simulacion/prueba4_alta_velocidad.png}
+    \includegraphics[width=0.85\textwidth]{prueba4_alta_velocidad.png}
     \caption{Simulación a alta velocidad de izaje: el panel de control y las gráficas advierten sobrecarga por superar la capacidad nominal del motor.}
     \label{fig:prueba4}
 \end{figure}
@@ -757,7 +757,7 @@ El motor Chongqing Mini queda completamente sobrepasado por la combinación de v
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{simulacion/prueba5_motor_sobrecarga.png}
+    \includegraphics[width=0.85\textwidth]{prueba5_motor_sobrecarga.png}
     \caption{Simulación de motor inadecuado: la combinación de variables dinámicas sobrepasa en un $143\%$ la capacidad de diseño del motor Chongqing Mini.}
     \label{fig:prueba5}
 \end{figure}
