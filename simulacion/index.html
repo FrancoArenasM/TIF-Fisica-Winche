@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Fuerzas - Winche Pesquero (Bonito)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <span class="unsa-badge">UNSA</span>
+                <div>
+                    <h1>Mecánica del Sistema de Izaje Pesquero</h1>
+                    <p class="subtitle">Trabajo de Investigación Formativa - Unidad II (Física I)</p>
+                </div>
+            </div>
+            <div class="vessel-badge">
+                <span class="status-indicator live"></span>
+                <span>Simulador de Cubierta v2.1</span>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="app-workspace">
+            
+            <!-- Controls Panel (Left) -->
+            <section class="panel controls-panel">
+                <h2 class="panel-title">Parámetros Operativos</h2>
+                
+                <div class="control-group">
+                    <label for="catch-mass">Masa de Captura (Bonito): <span id="val-mass">500</span> kg</label>
+                    <input type="range" id="catch-mass" min="100" max="1500" step="50" value="500">
+                    <div class="slider-labels">
+                        <span>0.1 Ton</span>
+                        <span>1.5 Ton</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="winch-speed">Velocidad de Izaje: <span id="val-speed">0.5</span> m/s</label>
+                    <input type="range" id="winch-speed" min="0.1" max="2.0" step="0.1" value="0.5">
+                    <div class="slider-labels">
+                        <span>Lento (0.1 m/s)</span>
+                        <span>Rápido (2.0 m/s)</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Estado de la Red</label>
+                    <div class="toggle-group">
+                        <input type="radio" id="state-submerged" name="catch-state" value="submerged" checked>
+                        <label for="state-submerged">Sumergida (Con Empuje)</label>
+                        
+                        <input type="radio" id="state-air" name="catch-state" value="air">
+                        <label for="state-air">En Aire (Sin Empuje)</label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="pulley-system">Ventaja Mecánica (Polipastos)</label>
+                    <select id="pulley-system">
+                        <option value="1">Directo (1x) - Sin Poleas Móviles</option>
+                        <option value="2">Teclé Simple (2x) - 1 Polea Móvil</option>
+                        <option value="4" selected>Polipasto Doble (4x) - 2 Poleas Móviles</option>
+                        <option value="8">Polipasto Cuádruple (8x) - 4 Poleas Móviles</option>
+                    </select>
+                </div>
+
+                <h3 class="sub-panel-title">Condiciones del Mar (Oleaje)</h3>
+
+                <div class="control-group">
+                    <label for="wave-amp">Amplitud de Ola: <span id="val-wave-amp">1.0</span> m</label>
+                    <input type="range" id="wave-amp" min="0" max="3.0" step="0.2" value="1.0">
+                </div>
+
+                <div class="control-group">
+                    <label for="wave-period">Período de Ola: <span id="val-wave-period">6.0</span> s</label>
+                    <input type="range" id="wave-period" min="3.0" max="15.0" step="0.5" value="6.0">
+                </div>
+            </section>
+
+            <!-- Interactive Visualizer (Center) -->
+            <section class="panel visualizer-panel">
+                <div class="panel-header-row">
+                    <h2 class="panel-title">Visualización de Vectores y DCL</h2>
+                    <div class="legend">
+                        <span class="legend-item"><span class="legend-color tension"></span>Tensión (T)</span>
+                        <span class="legend-item"><span class="legend-color weight"></span>Peso (P)</span>
+                        <span class="legend-item"><span class="legend-color buoyancy"></span>Empuje (E)</span>
+                        <span class="legend-item"><span class="legend-color drag"></span>Arrastre (Fd)</span>
+                    </div>
+                </div>
+                
+                <div class="canvas-wrapper">
+                    <canvas id="sim-canvas"></canvas>
+                </div>
+            </section>
+
+            <!-- Telemetry & Engine Match (Right) -->
+            <section class="panel metrics-panel">
+                <h2 class="panel-title">Telemetría de Fuerzas (2D)</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Peso Real (P)</div>
+                        <div class="metric-value" id="metric-weight">4905 N</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Empuje Hidrostático (E)</div>
+                        <div class="metric-value" id="metric-buoyancy">4788 N</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Fricción Hidrodinámica (Fd)</div>
+                        <div class="metric-value" id="metric-drag">80 N</div>
+                    </div>
+                    <div class="metric-card highlight">
+                        <div class="metric-label">Tensión de Red Total</div>
+                        <div class="metric-value" id="metric-tension-net">197 N</div>
+                    </div>
+                </div>
+
+                <h2 class="panel-title margin-top">Requerimientos del Winche</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Tensión en Winche</div>
+                        <div class="metric-value" id="metric-tension-winch">49 N</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Torque en Tambor (R=0.25m)</div>
+                        <div class="metric-value" id="metric-torque">12.3 N·m</div>
+                    </div>
+                    <div class="metric-card highlight-power">
+                        <div class="metric-label">Potencia Mínima Requerida</div>
+                        <div class="metric-value" id="metric-power">0.05 kW</div>
+                        <div class="metric-sub" id="metric-power-hp">0.07 HP</div>
+                    </div>
+                </div>
+
+                <h2 class="panel-title margin-top">Compatibilidad de Motor Auxiliar</h2>
+                
+                <div class="engine-selector-area">
+                    <label for="engine-select">Seleccionar Motor Auxiliar:</label>
+                    <select id="engine-select">
+                        <option value="yanmar_3">Yanmar 3TNV88 (Auxiliar Pesquero - 18 kW / 24 HP)</option>
+                        <option value="caterpillar_15">Caterpillar C1.5 (Auxiliar Generador - 15 kW / 20 HP)</option>
+                        <option value="chongqing_mini">Chongqing Marine Diesel (Pequeño - 12 kW / 16 HP)</option>
+                    </select>
+                </div>
+
+                <div class="engine-status-box" id="engine-status">
+                    <div class="status-header">
+                        <span class="status-title">Estado de Carga:</span>
+                        <span class="status-badge state-ok" id="engine-status-badge">ÓPTIMO</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="engine-load-bar" style="width: 25%;"></div>
+                    </div>
+                    <div class="status-footer">
+                        <span>Carga de Trabajo: <span id="engine-load-pct">25%</span></span>
+                        <span>Límite: <span id="engine-limit">18.0 kW</span></span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer-bar">
+            <p>Física I - E.P. Ingeniería Pesquera - UNSA. Integrantes: Arenas Mamani, Chumbislla Sullca, Apucusi Mamani, Lupo Ziabala.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
