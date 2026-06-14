@@ -63,10 +63,18 @@ Para resolver este problema de ingeniería pesquera, aplicamos los principios fu
 
 #### 3.1. Caracterización Vectorial del Sistema
 Se establece un sistema de coordenadas bidimensional ($x, y$) en el plano vertical, donde el eje $y$ representa la profundidad del mar y el eje $x$ el arrastre horizontal hacia la embarcación. Las fuerzas actuantes sobre la red se modelan vectorialmente como:
-*   **Vector Peso ($\vec{P}$):** Fuerza de atracción gravitatoria sobre la masa de captura de bonito ($m$) y la red. Actúa verticalmente hacia abajo: $\vec{P} = -m \cdot g \hat{j}$
-*   **Vector Empuje Hidrostático ($\vec{E}$):** Fuerza de flotación vertical ejercida por el agua de mar (Principio de Arquímedes). Actúa hacia arriba mientras la captura esté sumergida: $\vec{E} = E \hat{j} = \rho_{\text{agua}} \cdot V_{\text{desplazado}} \cdot g \hat{j}$
-*   **Vector Fricción Hidrodinámica ($\vec{F}_d$):** Resistencia del fluido que se opone al movimiento de la red. Actúa en sentido contrario a la velocidad relativa: $\vec{F}_d = -F_d \cdot \text{sgn}(v_{\text{rel}}) \hat{j}$
-*   **Vector Tensión ($\vec{T}$):** Fuerza de tracción ejercida por el cable del winche a través del sistema de poleas. Actúa verticalmente hacia arriba: $\vec{T} = T \hat{j}$
+
+*   **Vector Peso ($\vec{P}$):** Fuerza de atracción gravitatoria sobre la masa de captura de bonito ($m$) y la red. Actúa verticalmente hacia abajo:
+$$\vec{P} = -m \cdot g \hat{j}$$
+
+*   **Vector Empuje Hidrostático ($\vec{E}$):** Fuerza de flotación vertical ejercida por el agua de mar (Principio de Arquímedes). Actúa hacia arriba mientras la captura esté sumergida:
+$$\vec{E} = E \hat{j} = \rho_{\text{agua}} \cdot V_{\text{desplazado}} \cdot g \hat{j}$$
+
+*   **Vector Fricción Hidrodinámica ($\vec{F}_d$):** Resistencia del fluido que se opone al movimiento de la red. Actúa en sentido contrario a la velocidad relativa:
+$$\vec{F}_d = -F_d \cdot \text{sgn}(v_{\text{rel}}) \hat{j}$$
+
+*   **Vector Tensión ($\vec{T}$):** Fuerza de tracción ejercida por el cable del winche a través del sistema de poleas. Actúa verticalmente hacia arriba:
+$$\vec{T} = T \hat{j}$$
 
 ---
 
