@@ -56,9 +56,9 @@ El Perú es uno de los líderes mundiales en la extracción de recursos hidrobio
 Para resolver este problema de ingeniería pesquera, aplicamos los principios fundamentales de la mecánica vectorial, dinámica de partículas, fluidos y oscilaciones:
 
 <p align="center">
-  <img src="imagenes/esquema_fuerzas_winche.png" width="85%" alt="Esquema de Fuerzas, Torque y Tensión en el Tambor del Winche">
+  <img src="imagenes/figura1_dcl_bonito.png" width="65%" alt="Diagrama de Cuerpo Libre DCL de la red">
   <br>
-  <em>Figura 1: Esquema de fuerzas dinámicas en el tambor de arrollamiento (Tensión F, velocidad angular $\omega$, torque $M_t$ y diámetro del tambor).</em>
+  <em>Figura 1: Diagrama de Cuerpo Libre (DCL) de la captura de Bonito con descomposición angular.</em>
 </p>
 
 #### 3.1. Caracterización Vectorial del Sistema
@@ -130,6 +130,12 @@ Para transferir la tensión dinámica de la red al winche a través del polipast
 *   **Potencia Requerida del Motor ($P_{\text{req}}$):** Considerando una eficiencia mecánica del winche de $\eta = 0.85$:
     $$P_{\text{req}} = \frac{T_{\text{din}} \cdot v_{\text{izaje}}}{\eta}$$
 
+<p align="center">
+  <img src="imagenes/figura2_dcl_barco.png" width="75%" alt="Diagrama de Cuerpo Libre DCL de la embarcación">
+  <br>
+  <em>Figura 2: Diagrama de Cuerpo Libre (DCL) de la embarcación pesquera y sus vectores de fuerza durante el virado.</em>
+</p>
+
 ---
 
 ### 4. Aplicación Práctica en la Ingeniería Pesquera y Simulación
@@ -145,7 +151,91 @@ Para validar la viabilidad del izaje de **500 kg de bonito** bajo condiciones di
 
 ---
 
-#### 4.2. Simulador Interactivo de Cubierta (Python / Web)
+#### 4.2. Pruebas de Funcionamiento y Análisis de Escenarios en el Simulador
+Con el fin de verificar la estabilidad, precisión y comportamiento del sistema ante condiciones variables de operación, se ejecutó una batería de cinco pruebas dinámicas automatizadas utilizando el simulador desarrollado. Cada escenario evalúa la respuesta del cable, la evolución del DCL resultante y la carga impuesta sobre los motores marinos seleccionados.
+
+A continuación se detallan las configuraciones evaluadas y los resultados obtenidos directamente de las telemetrías del simulador:
+
+##### 4.2.1. Prueba 1: Buque Estacionario en Mar en Calma
+Este escenario replica las condiciones de diseño base del Escenario 1 ($m = 500\text{ kg}$, $v_{\text{izaje}} = 0.5\text{ m/s}$, $v_{\text{corriente}} = 0\text{ m/s}$). El cable se mantiene en posición perfectamente vertical ($\theta = 0.0^\circ$) al no existir corrientes transversales.
+*   **Tensión total en el cable ($T$):** $4901\text{ N}$.
+*   **Potencia requerida por el motor ($P_{\text{req}}$):** $2.88\text{ kW}$.
+*   **Momento de escora ($M_e$):** $0\text{ N}\cdot\text{m}$.
+*   **Estado del motor (Yanmar 3TNV88):** Óptimo (baja carga de operación, $\approx 16\%$).
+
+<p align="center">
+  <img src="prueba1_mar_calma.png" width="85%" alt="Simulación en mar en calma">
+  <br>
+  <em>Figura 3: Simulación en mar en calma: el cable permanece vertical y la telemetría coincide con el equilibrio estático de fuerzas.</em>
+</p>
+
+##### 4.2.2. Prueba 2: Izaje bajo Efecto de Corriente Marina Transversal
+Corresponde a las condiciones de diseño críticas del Escenario 2 ($m = 500\text{ kg}$, $v_{\text{izaje}} = 0.5\text{ m/s}$, $v_{\text{corriente}} = 1.5\text{ m/s}$). La corriente transversal desplaza lateralmente la red cargada.
+*   **Tensión total en el cable ($T$):** $6028\text{ N}$.
+*   **Ángulo del cable ($\theta$):** $21.2^\circ$ respecto a la vertical.
+*   **Potencia requerida por el motor ($P_{\text{req}}$):** $3.55\text{ kW}$.
+*   **Momento de escora ($M_e$):** $7398\text{ N}\cdot\text{m}$ (a una altura del boom $h = 3.4\text{ m}$).
+*   **Estado del motor (Yanmar 3TNV88):** Óptimo (carga moderada, $\approx 20\%$).
+
+La fuerza horizontal de la corriente y la inclinación del cable incrementan notablemente la tensión total y provocan un momento de escora sobre el buque que debe ser monitoreado para la estabilidad naval.
+
+<p align="center">
+  <img src="prueba2_corriente_1_5.png" width="85%" alt="Simulación con corriente marina transversal">
+  <br>
+  <em>Figura 4: Simulación con corriente marina transversal de $1.5\text{ m/s}$: se aprecia la inclinación del cable ($\theta \approx 21.2^\circ$) y el correspondiente momento de escora.</em>
+</p>
+
+##### 4.2.3. Prueba 3: Operación a Carga Máxima
+Se evalúa un escenario extremo de izaje de captura masiva de bonito ($m = 1500\text{ kg}$) manteniendo la velocidad de izaje en $0.5\text{ m/s}$ y bajo la corriente transversal estándar de $1.5\text{ m/s}$.
+*   **Tensión total en el cable ($T$):** $17242\text{ N}$.
+*   **Ángulo del cable ($\theta$):** $14.1^\circ$.
+*   **Potencia requerida por el motor ($P_{\text{req}}$):** $10.14\text{ kW}$.
+*   **Momento de escora ($M_e$):** $14310\text{ N}\cdot\text{m}$.
+*   **Estado del motor (Yanmar 3TNV88):** Óptimo (carga de trabajo pesada, $\approx 56\%$).
+
+Aunque la masa de bonito se triplica, el ángulo $\theta$ disminuye a $14.1^\circ$ debido al mayor peso en la vertical ($P = 14715\text{ N}$) en relación con el arrastre hidrodinámico. El motor Yanmar 3TNV88 demuestra su idoneidad al soportar holgadamente esta maniobra crítica de izaje.
+
+<p align="center">
+  <img src="prueba3_carga_maxima.png" width="85%" alt="Simulación a carga máxima">
+  <br>
+  <em>Figura 5: Simulación a carga máxima ($m = 1500\text{ kg}$): el motor Yanmar 3TNV88 opera de forma segura al $56\%$ de su potencia nominal.</em>
+</p>
+
+##### 4.2.4. Prueba 4: Alta Velocidad de Izaje
+Se analiza un izaje rápido de la captura ($v_{\text{izaje}} = 2.0\text{ m/s}$) bajo condiciones de carga estándar ($m = 500\text{ kg}$) y corriente transversal de $1.5\text{ m/s}$.
+*   **Tensión total en el cable ($T$):** $9943\text{ N}$.
+*   **Ángulo del cable ($\theta$):** $19.7^\circ$.
+*   **Potencia requerida por el motor ($P_{\text{req}}$):** $23.40\text{ kW}$.
+*   **Momento de escora ($M_e$):** $11411\text{ N}\cdot\text{m}$.
+*   **Estado del motor (Yanmar 3TNV88):** **¡SOBRECARGA!** ($\approx 130\%$).
+
+Al elevar a alta velocidad, la potencia requerida se dispara debido al trabajo mecánico rápido, superando la potencia límite de $18.0\text{ kW}$ del Yanmar 3TNV88. Esto genera una alarma visual en el simulador y evidencia la necesidad de limitar la velocidad del winche durante el virado.
+
+<p align="center">
+  <img src="prueba4_alta_velocidad.png" width="85%" alt="Simulación a alta velocidad de izaje">
+  <br>
+  <em>Figura 6: Simulación a alta velocidad de izaje: el panel de control y las gráficas advierten sobrecarga por superar la capacidad nominal del motor.</em>
+</p>
+
+##### 4.2.5. Prueba 5: Selección de Motor Inadecuado bajo Condiciones de Tempestad
+Se simula el izaje con el motor más pequeño de la comparativa (*Chongqing Mini*, con límite de $12.0\text{ kW}$) ante una biomasa de $1000\text{ kg}$, velocidad del winche de $1.0\text{ m/s}$ y corriente marina severa de $2.0\text{ m/s}$.
+*   **Tensión total en el cable ($T$):** $14622\text{ N}$.
+*   **Ángulo del cable ($\theta$):** $25.6^\circ$.
+*   **Potencia requerida por el motor ($P_{\text{req}}$):** $17.20\text{ kW}$.
+*   **Momento de escora ($M_e$):** $21465\text{ N}\cdot\text{m}$.
+*   **Estado del motor (Chongqing Mini):** **¡SOBRECARGA CRÍTICA!** ($\approx 143\%$).
+
+El motor Chongqing Mini queda completamente sobrepasado por la combinación de velocidad, corriente y carga, lo que resultaría en una falla de velocidad o detención térmica en una maniobra real. Asimismo, el momento de escora es muy elevado ($21465\text{ N}\cdot\text{m}$), comprometiendo la estabilidad lateral.
+
+<p align="center">
+  <img src="prueba5_motor_sobrecarga.png" width="85%" alt="Simulación de motor inadecuado">
+  <br>
+  <em>Figura 7: Simulación de motor inadecuado: la combinación de variables dinámicas sobrepasa en un $143\%$ la capacidad de diseño del motor Chongqing Mini.</em>
+</p>
+
+---
+
+#### 4.3. Simulador Interactivo de Cubierta (Python / Web)
 Como parte del desarrollo tecnológico del proyecto, construimos un simulador interactivo en tiempo real. 
 
 El simulador permite:
