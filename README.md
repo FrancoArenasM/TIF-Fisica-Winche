@@ -137,30 +137,7 @@ Para validar la viabilidad del izaje de **500 kg de bonito** bajo condiciones di
 
 ---
 
-#### 4.2. Detalles del Diseño Mecánico y Prototipado CAD
-El análisis físico utiliza los modelos dimensionales desarrollados en Autodesk Inventor para garantizar que la resistencia de los materiales soporte los esfuerzos calculados:
-
-<p align="center">
-  <img src="imagenes/ensamble_winche_3d.png" width="85%" alt="Modelado 3D del Ensamble General del Winche Pesquero">
-  <br>
-  <em>Figura 2: Ensamble tridimensional general del winche pesquero modelado en Autodesk Inventor (winche_ensamble.iam).</em>
-</p>
-
-<p align="center">
-  <img src="imagenes/tambor_cad.png" width="85%" alt="Diseño CAD del Tambor de Enrollamiento">
-  <br>
-  <em>Figura 3: Modelo del tambor de arrollamiento de cables (tambor.ipt), diseñado para soportar las presiones radiales del cable de acero.</em>
-</p>
-
-<p align="center">
-  <img src="imagenes/eje_cad.png" width="85%" alt="Diseño CAD del Eje de Transmisión">
-  <br>
-  <em>Figura 4: Eje central de transmisión de torque (eje.ipt), dimensionado para resistir esfuerzos combinados de torsión y flexión.</em>
-</p>
-
----
-
-#### 4.3. Simulador Interactivo de Cubierta (Python / Web)
+#### 4.2. Simulador Interactivo de Cubierta (Python / Web)
 Como parte del desarrollo tecnológico del proyecto, construimos un simulador interactivo en tiempo real. 
 
 El simulador permite:
@@ -174,7 +151,7 @@ El simulador permite:
 
 El dominio de la física, desde el análisis vectorial de fuerzas hasta la modelación de la mecánica de fluidos (Arquímedes) y la dinámica oscilatoria, dota al ingeniero pesquero de las herramientas necesarias para diseñar operaciones de cubierta eficientes y seguras. 
 
-Comprender la interacción de estas leyes en un entorno marino dinámico nos permite ir más allá del cálculo tradicional y sentar las bases para la automatización a bordo. Al simular matemáticamente las variables de tensión, torque y arrastre, demostramos cómo se justifica la selección de motores auxiliares y el diseño CAD de componentes como el eje y el tambor. La física, integrada con herramientas modernas de simulación y diseño tridimensional, nos transforma de operadores de recursos a desarrolladores de tecnología y seguridad en la industria pesquera.
+Comprender la interacción de estas leyes en un entorno marino dinámico nos permite ir más allá del cálculo tradicional y sentar las bases para la automatización a bordo. Al simular matemáticamente las variables de tensión, torque y arrastre, demostramos cómo se justifica la selección de motores auxiliares. La física, integrada con herramientas de simulación y modelación computacional, nos transforma de operadores de recursos a desarrolladores de tecnología y seguridad en la industria pesquera.
 
 ---
 
