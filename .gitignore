@@ -15,3 +15,12 @@ Thumbs.db
 *.njsproj
 *.sln
 *.swp
+
+# Word documents and documents to exclude
+*.docx
+*.doc
+extracted_media/
+DIFERENCIAS ENTRE ARTICULO E INFORME.md
+Pautas para el Trabajo de Investigación Formativa (TIF) FASE 2.md
+TIF Física - Análisis Winche Pesquero.md
+
